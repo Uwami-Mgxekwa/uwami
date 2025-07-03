@@ -166,6 +166,7 @@ body {
 /* Hero Section */
 .hero {
     min-height: 100vh;
+    padding-top: 70px; /* Add this line to account for navbar height */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -336,6 +337,18 @@ body {
     align-items: center;
 }
 
+
+
+
+.code-content {
+    padding: 1.5rem;
+    background: var(--bg-dark);
+    min-height: 300px; /* Match container height */
+    height: 100%; /* Ensure it fills container */
+    overflow: hidden; /* Prevent content from overflowing */
+}
+
+
 .code-window {
     background: var(--card-bg);
     border-radius: 12px;
@@ -344,6 +357,9 @@ body {
     box-shadow: var(--shadow-glow);
     width: 100%;
     max-width: 500px;
+    max-height: 300px; /* Add fixed height */
+    overflow-y: auto; /* Add scroll if content is too tall */
+    min-height: 300px; /* Prevent height changes */
 }
 
 .window-header {
