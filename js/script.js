@@ -94,22 +94,36 @@ function initCodeAnimation() {
     const codeElement = document.getElementById('code-animation');
     if (!codeElement) return;
 
+    // Mobile-specific adjustments
+    const isMobile = window.innerWidth <= 768;
     const codeSnippets = [
         {
             language: 'java',
-            code: `public class Developer {
-    private String name = "Owami Mgxekwa";
-    private String role = "Software Developer";
-    private String passion = "Education & Innovation";
+            code: isMobile ? 
+                `public class Dev {
+    private String name = "Owami";
+    private String role = "Developer";
     
-    public void createAmazingApps() {
+    public void create() {
         while(learning) {
-            code();
-            teach();
-            innovate();
+        code();
+        teach();
         }
     }
-}`
+    }` : 
+                    `public class Developer {
+        private String name = "Owami Mgxekwa";
+        private String role = "Software Developer";
+        
+        public void createAmazingApps() {
+            while(learning) {
+                code();
+                teach();
+                innovate();
+            }
+        }
+    }`
+        
         },
         {
             language: 'javascript',

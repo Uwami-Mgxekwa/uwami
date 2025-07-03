@@ -339,6 +339,23 @@ body {
 
 
 
+@media (max-width: 768px) {
+    .hero-content {
+        padding-top: 2rem; /* Extra space on top */
+        padding-bottom: 2rem; /* Extra space at bottom */
+    }
+    
+    .title-name {
+        font-size: 2.5rem;
+        line-height: 1.2; /* Better line spacing */
+    }
+    
+    .hero-description {
+        font-size: 1rem; /* Slightly smaller text */
+        margin-bottom: 2rem;
+    }
+}
+
 
 .code-content {
     padding: 1.5rem;
@@ -1397,5 +1414,37 @@ body {
 @media (max-width: 480px) {
     .image-card img {
         height: 200px; /* Smaller height for very small screens */
+    }
+}
+
+/* Add to your existing media queries */
+@media (max-width: 480px) {
+    .code-window {
+        min-height: 250px; /* Smaller fixed height for very small screens */
+    }
+    
+    .code-content {
+        min-height: 250px;
+        padding: 1rem; /* Smaller padding */
+    }
+    
+    #code-animation {
+        font-size: 0.8rem; /* Smaller font for code */
+        line-height: 1.5; /* Tighter line spacing */
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        height: 60px; /* Slightly smaller navbar */
+    }
+    
+    .nav-container {
+        height: 60px; /* Match navbar height */
+    }
+    
+    .nav-menu {
+        top: 60px; /* Adjust for smaller navbar */
+        height: calc(100vh - 60px); /* Adjust height */
     }
 }
