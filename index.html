@@ -650,7 +650,47 @@
         </div>
     </footer>
 
+    <button class="chatbot-button" id="chatbotButton" aria-label="Open chatbot">
+        <i class="chat-icon">💬</i>
+        <i class="close-icon">✕</i>
+    </button>
+
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <div class="chatbot-avatar">
+                <span>OM</span>
+            </div>
+            <div class="chatbot-info">
+                <h3>Owami's Assistant</h3>
+                <p><span class="status-dot"></span> Online • Ready to help!</p>
+            </div>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot">
+                <div class="message-avatar">OM</div>
+                <div>
+                    <div class="message-content">
+                        Hi! 👋 I'm Owami's personal assistant. How can I help you learn more about Owami's work and expertise?
+                    </div>
+                    <div class="quick-replies">
+                        <button class="quick-reply-btn" data-message="Tell me about your skills">Skills</button>
+                        <button class="quick-reply-btn" data-message="What projects have you worked on?">Projects</button>
+                        <button class="quick-reply-btn" data-message="How can I contact you?">Contact</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Ask me anything...">
+            <button class="chatbot-send-btn" id="chatbotSend" aria-label="Send message">
+                <span>➤</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="./js/chatbot.js"></script> <!-- ADD THIS NEW LINE -->
     <script src="./js/script.js"></script>
+
 </body>
 
 </html>
