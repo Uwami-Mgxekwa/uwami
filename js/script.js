@@ -1,3 +1,7 @@
+// Navigation Functionality
+function initNavigation() {
+    const navbar = document.querySelector('.navbar');
+    const hamburger = document.querySelector('.hamburger');
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
 
@@ -28,7 +32,7 @@
     window.addEventListener('scroll', () => {
         let current = '';
         const sections = document.querySelectorAll('section');
-        
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
@@ -45,7 +49,6 @@
         });
     });
 }
-
 // Typewriter Effect for Hero Name
 function initTypewriter() {
     const typewriterElement = document.getElementById('typewriter');
@@ -53,10 +56,10 @@ function initTypewriter() {
 
     const text = 'Owami Mgxekwa';
     let i = 0;
-    
+
     // Clear the text first
     typewriterElement.textContent = '';
-    
+
     function typeWriter() {
         if (i < text.length) {
             typewriterElement.textContent += text.charAt(i);
@@ -64,7 +67,7 @@ function initTypewriter() {
             setTimeout(typeWriter, 100);
         }
     }
-    
+
     // Start after a small delay
     setTimeout(typeWriter, 1000);
 }
@@ -79,7 +82,7 @@ function initCodeAnimation() {
     const codeSnippets = [
         {
             language: 'java',
-            code: isMobile ? 
+            code: isMobile ?
                 `public class Dev {
     private String name = "Owami";
     private String role = "Developer";
@@ -90,8 +93,8 @@ function initCodeAnimation() {
         teach();
         }
     }
-    }` : 
-                    `public class Developer {
+    }` :
+                `public class Developer {
         private String name = "Owami Mgxekwa";
         private String role = "Software Developer";
         
@@ -103,7 +106,7 @@ function initCodeAnimation() {
             }
         }
     }`
-        
+
         },
         {
             language: 'javascript',
@@ -146,7 +149,7 @@ function initCodeAnimation() {
     function typeCode() {
         const snippet = codeSnippets[currentSnippet];
         const currentText = snippet.code.substring(0, currentChar);
-        
+
         codeElement.innerHTML = `<code class="language-${snippet.language}">${currentText}<span class="cursor">|</span></code>`;
 
         if (!isDeleting && currentChar < snippet.code.length) {
@@ -221,7 +224,7 @@ function initCounters() {
 // Scroll Animations
 function initScrollAnimations() {
     const animatedElements = document.querySelectorAll('.about-card, .skill-card, .project-card, .timeline-item');
-    
+
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -243,17 +246,17 @@ function initScrollAnimations() {
 // Skill Bars Animation
 function initSkillBars() {
     const skillCards = document.querySelectorAll('.skill-card');
-    
+
     const skillObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const skillLevel = entry.target.getAttribute('data-skill');
                 const progressBar = entry.target.querySelector('.skill-progress');
-                
+
                 setTimeout(() => {
                     progressBar.style.width = skillLevel + '%';
                 }, Math.random() * 500);
-                
+
                 skillObserver.unobserve(entry.target);
             }
         });
@@ -265,17 +268,17 @@ function initSkillBars() {
 
     // Learning progress bars
     const learningCards = document.querySelectorAll('.learning-card');
-    
+
     const learningObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const progressBar = entry.target.querySelector('.progress-bar');
                 const progress = progressBar.getAttribute('data-progress');
-                
+
                 setTimeout(() => {
                     progressBar.style.width = progress + '%';
                 }, Math.random() * 300);
-                
+
                 learningObserver.unobserve(entry.target);
             }
         });
@@ -289,7 +292,7 @@ function initSkillBars() {
 // Timeline Animations
 function initTimelineAnimations() {
     const timelineItems = document.querySelectorAll('.timeline-item');
-    
+
     const timelineObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -307,13 +310,13 @@ function initTimelineAnimations() {
 // Smooth Scrolling
 function initSmoothScrolling() {
     const navLinks = document.querySelectorAll('.nav-link');
-    
+
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const targetId = link.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-            
+
             if (targetSection) {
                 const offsetTop = targetSection.offsetTop - 80;
                 window.scrollTo({
@@ -339,11 +342,11 @@ function initSmoothScrolling() {
 // Parallax Effect for Hero Section
 function initParallaxEffect() {
     const floatingElements = document.querySelectorAll('.floating-element');
-    
+
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         const parallaxSpeed = 0.5;
-        
+
         floatingElements.forEach((element, index) => {
             const speed = parseFloat(element.getAttribute('data-speed')) || 1;
             const yPos = -(scrolled * parallaxSpeed * speed);
@@ -361,16 +364,16 @@ function initParallaxEffect() {
 // Contact Form Interactions
 function initContactFormInteractions() {
     const contactButtons = document.querySelectorAll('.contact-button');
-    
+
     contactButtons.forEach(button => {
         button.addEventListener('mouseenter', () => {
             button.style.transform = 'translateY(-2px) scale(1.02)';
         });
-        
+
         button.addEventListener('mouseleave', () => {
             button.style.transform = 'translateY(0) scale(1)';
         });
-        
+
         button.addEventListener('click', (e) => {
             // Add click animation
             button.style.transform = 'translateY(0) scale(0.98)';
@@ -404,7 +407,7 @@ function updateScrollProgress() {
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const scrolled = (winScroll / height) * 100;
-    
+
     // You can use this for a scroll progress indicator if needed
     document.documentElement.style.setProperty('--scroll-progress', scrolled + '%');
 }
@@ -412,7 +415,7 @@ function updateScrollProgress() {
 // Add loading animation
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
-    
+
     // Trigger initial animations
     setTimeout(() => {
         const heroElements = document.querySelectorAll('.hero-text > *');
@@ -433,7 +436,7 @@ document.addEventListener('keydown', (e) => {
     if (konamiCode.length > konamiSequence.length) {
         konamiCode.shift();
     }
-    
+
     if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
         // Easter egg activated!
         document.body.classList.add('matrix-mode');
@@ -465,3 +468,39 @@ if (typeof module !== 'undefined' && module.exports) {
         initContactFormInteractions
     };
 }
+// Theme Toggle Functionality
+function initThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+
+    // Load saved theme from localStorage
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    htmlElement.setAttribute('data-theme', savedTheme);
+
+    // Toggle theme on button click
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    }
+}
+
+// Initialize all functions when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initNavigation();
+    initTypewriter();
+    initCodeAnimation();
+    initCounters();
+    initScrollAnimations();
+    initSkillBars();
+    initTimelineAnimations();
+    initSmoothScrolling();
+    initParallaxEffect();
+    initContactFormInteractions();
+    initThemeToggle();
+});
+
