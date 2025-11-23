@@ -1,23 +1,3 @@
-// Portfolio JavaScript - Interactive Features and Animations
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all features
-    initNavigation();
-    initTypewriter();
-    initCodeAnimation();
-    initCounters();
-    initScrollAnimations();
-    initSkillBars();
-    initTimelineAnimations();
-    initSmoothScrolling();
-    initParallaxEffect();
-    initContactFormInteractions();
-});
-
-// Navigation Functions
-function initNavigation() {
-    const navbar = document.getElementById('navbar');
-    const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
 
