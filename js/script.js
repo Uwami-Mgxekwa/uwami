@@ -525,3 +525,177 @@ document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
 });
 
+
+
+// ============================================
+// CUSTOM CURSOR
+// ============================================
+function initCustomCursor() {
+    // Only on desktop
+    if (window.innerWidth <= 768) return;
+
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorOutline = document.querySelector('.cursor-outline');
+
+    if (!cursorDot || !cursorOutline) return;
+
+    let mouseX = 0, mouseY = 0;
+    let outlineX = 0, outlineY = 0;
+
+    // Show cursor after first move
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        cursorDot.classList.add('active');
+        cursorOutline.classList.add('active');
+
+        // Dot follows immediately
+        cursorDot.style.left = mouseX + 'px';
+        cursorDot.style.top = mouseY + 'px';
+    });
+
+    // Smooth outline follow
+    function animateOutline() {
+        outlineX += (mouseX - outlineX) * 0.15;
+        outlineY += (mouseY - outlineY) * 0.15;
+
+        cursorOutline.style.left = outlineX + 'px';
+        cursorOutline.style.top = outlineY + 'px';
+
+        requestAnimationFrame(animateOutline);
+    }
+    animateOutline();
+
+    // Hover effects
+    const hoverElements = document.querySelectorAll('a, button, .project-card, .skill-card, .hex-item, .stat-card');
+    
+    hoverElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursorOutline.classList.add('hover');
+        });
+        
+        el.addEventListener('mouseleave', () => {
+            cursorOutline.classList.remove('hover');
+        });
+    });
+
+    // Hide cursor when leaving window
+    document.addEventListener('mouseleave', () => {
+        cursorDot.classList.remove('active');
+        cursorOutline.classList.remove('active');
+    });
+}
+
+// ============================================
+// HEXAGONAL SKILLS ANIMATION
+// ============================================
+function initHexSkills() {
+    const hexItems = document.querySelectorAll('.hex-item');
+
+    const hexObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 100);
+                hexObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    hexItems.forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(50px)';
+        item.style.transition = 'all 0.6s ease';
+        hexObserver.observe(item);
+    });
+}
+
+// ============================================
+// GITHUB STATS FETCHER
+// ============================================
+async function fetchGitHubStats() {
+    const username = 'Uwami-Mgxekwa';
+    
+    try {
+        // Fetch user data
+        const userResponse = await fetch(`https://api.github.com/users/${username}`);
+        const userData = await userResponse.json();
+
+        // Fetch repositories
+        const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
+        const reposData = await reposResponse.json();
+
+        // Calculate stats
+        const totalStars = reposData.reduce((acc, repo) => acc + repo.stargazers_count, 0);
+        const totalForks = reposData.reduce((acc, repo) => acc + repo.forks_count, 0);
+
+        // Update DOM
+        animateCounter('total-repos', userData.public_repos);
+        animateCounter('total-stars', totalStars);
+        animateCounter('total-forks', totalForks);
+        animateCounter('total-followers', userData.followers);
+
+        // Update profile info
+        document.getElementById('github-avatar').src = userData.avatar_url;
+        document.getElementById('github-name').textContent = userData.name || username;
+        document.getElementById('github-bio').textContent = userData.bio || 'Software Developer & Educator';
+
+    } catch (error) {
+        console.error('Error fetching GitHub stats:', error);
+        // Fallback values
+        document.getElementById('total-repos').textContent = '50+';
+        document.getElementById('total-stars').textContent = '100+';
+        document.getElementById('total-forks').textContent = '20+';
+        document.getElementById('total-followers').textContent = '50+';
+        document.getElementById('github-name').textContent = 'Owami Mgxekwa';
+        document.getElementById('github-bio').textContent = 'Software Developer & IT Systems Development Lecturer';
+    }
+}
+
+function animateCounter(elementId, target) {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+
+    let current = 0;
+    const increment = target / 50;
+    const duration = 2000;
+    const stepTime = duration / 50;
+
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, stepTime);
+}
+
+
+
+// ============================================
+// INITIALIZE ALL NEW FEATURES
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+    // Existing initializations
+    initNavigation();
+    initTypewriter();
+    initCodeAnimation();
+    initCounters();
+    initScrollAnimations();
+    initSkillBars();
+    initTimelineAnimations();
+    initSmoothScrolling();
+    initParallaxEffect();
+    initContactFormInteractions();
+    initThemeToggle();
+
+    // New feature initializations
+    initCustomCursor();
+    initHexSkills();
+    fetchGitHubStats();
+});

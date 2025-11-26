@@ -2500,3 +2500,360 @@ section {
 [data-theme="light"] .project-card {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
+
+/* ============================================
+   CUSTOM CURSOR
+   ============================================ */
+.cursor-dot,
+.cursor-outline {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    z-index: 10000;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    box-shadow: 0 0 10px var(--primary);
+}
+
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--primary);
+    transition: all 0.15s ease-out;
+}
+
+.cursor-dot.active,
+.cursor-outline.active {
+    opacity: 1;
+}
+
+.cursor-outline.hover {
+    width: 60px;
+    height: 60px;
+    background: rgba(241, 196, 15, 0.1);
+}
+
+/* Hide cursor on mobile */
+@media (max-width: 768px) {
+    .cursor-dot,
+    .cursor-outline {
+        display: none;
+    }
+}
+
+/* Logo - simple hover */
+.nav-logo {
+    position: relative;
+    cursor: pointer;
+}
+
+.logo-text {
+    transition: all 0.3s ease;
+}
+
+.nav-logo:hover .logo-text {
+    transform: scale(1.05);
+}
+
+/* ============================================
+   HEXAGONAL SKILLS GRID
+   ============================================ */
+.hex-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin: 4rem 0;
+    padding: 2rem 0;
+}
+
+.hex-item {
+    width: 200px;
+    height: 230px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.hex-item:hover {
+    transform: translateY(-10px);
+    z-index: 10;
+}
+
+.hexagon {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.hex-inner {
+    width: 100%;
+    height: 100%;
+    background: var(--card-bg);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.hex-item:hover .hex-inner {
+    border-color: var(--primary);
+    box-shadow: 
+        0 0 20px rgba(241, 196, 15, 0.3),
+        inset 0 0 20px rgba(241, 196, 15, 0.1);
+}
+
+.hex-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(241, 196, 15, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.hex-item:hover .hex-inner::before {
+    left: 100%;
+}
+
+.hex-content {
+    text-align: center;
+    z-index: 2;
+    padding: 1rem;
+}
+
+.hex-content .skill-icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    filter: grayscale(0.3);
+    transition: all 0.3s ease;
+}
+
+.hex-item:hover .hex-content .skill-icon {
+    filter: grayscale(0);
+    transform: scale(1.2);
+}
+
+.hex-content h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.hex-content .skill-level {
+    font-size: 0.8rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+/* Responsive Hexagonal Grid */
+@media (max-width: 768px) {
+    .hex-grid {
+        gap: 1.5rem;
+    }
+    
+    .hex-item {
+        width: 150px;
+        height: 170px;
+    }
+    
+    .hex-content .skill-icon {
+        font-size: 2.5rem;
+    }
+    
+    .hex-content h4 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hex-item {
+        width: 130px;
+        height: 150px;
+    }
+    
+    .hex-content .skill-icon {
+        font-size: 2rem;
+    }
+}
+
+/* ============================================
+   GITHUB STATS SECTION
+   ============================================ */
+.github-stats {
+    padding: 8rem 0;
+    background: var(--bg-dark);
+}
+
+.github-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(241, 196, 15, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.stat-card:hover::before {
+    left: 100%;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 30px rgba(241, 196, 15, 0.2);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    width: 60px;
+    height: 60px;
+    background: rgba(241, 196, 15, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stat-info h3 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 0.3rem;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.stat-info p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.github-profile-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header-github {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.github-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--primary);
+    box-shadow: 0 0 20px rgba(241, 196, 15, 0.3);
+}
+
+.github-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.github-info p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--gradient-primary);
+    color: var(--bg-dark);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.github-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(241, 196, 15, 0.3);
+}
+
+/* GitHub Stats Responsive */
+@media (max-width: 768px) {
+    .stats-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .stat-card {
+        padding: 1.5rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .profile-header-github {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .github-avatar {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Project cards - simple hover effect */

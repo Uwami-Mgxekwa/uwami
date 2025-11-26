@@ -42,7 +42,11 @@
 </head>
 
 <body>
-    <nav class="navbar" id="navbar">
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav class="navbar" id="navbar"></nav>
         <div class="nav-container">
             <div class="nav-logo">
                 <span class="logo-text">OM</span>
@@ -85,7 +89,7 @@
             <div class="hero-text">
                 <h1 class="hero-title">
                     <span class="title-line">Hi, I'm</span>
-                    <span class="title-name" id="typewriter">Owami Mgxekwa</span>
+                    <span class="title-name" id="typewriter"></span>
                     <span class="title-subtitle">Developer & Educator</span>
                 </h1>
                 <p class="hero-description">
@@ -302,78 +306,90 @@
     <section id="skills" class="skills">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Skills Matrix</h2>
+                <h2 class="section-title">Skills Arsenal</h2>
                 <div class="section-line"></div>
+                <p class="section-subtitle">Hexagonal mastery across the stack</p>
             </div>
-            <div class="skills-content">
-                <div class="skills-category">
-                    <h3>Core Technologies</h3>
-                    <div class="skills-grid">
-                        <div class="skill-card" data-skill="95">
-                            <div class="skill-icon">☕</div>
-                            <h4>Java</h4>
-                            <p>Primary language with Java Swing expertise</p>
-                            <div class="skill-bar">
-                                <div class="skill-progress"></div>
-                            </div>
-                        </div>
-                        <div class="skill-card" data-skill="90">
-                            <div class="skill-icon">🌐</div>
-                            <h4>JavaScript</h4>
-                            <p>Modern ES6+ and DOM manipulation</p>
-                            <div class="skill-bar">
-                                <div class="skill-progress"></div>
-                            </div>
-                        </div>
-                        <div class="skill-card" data-skill="85">
-                            <div class="skill-icon">⚡</div>
-                            <h4>C++</h4>
-                            <p>System programming and algorithms</p>
-                            <div class="skill-bar">
-                                <div class="skill-progress"></div>
-                            </div>
-                        </div>
-                        <div class="skill-card" data-skill="88">
-                            <div class="skill-icon">🍃</div>
-                            <h4>Spring Boot</h4>
-                            <p>Enterprise Java applications & REST APIs</p>
-                            <div class="skill-bar">
-                                <div class="skill-progress"></div>
-                            </div>
-                        </div>
-                        <div class="skill-card" data-skill="85">
-                            <div class="skill-icon">🗃️</div>
-                            <h4>SQL</h4>
-                            <p>Database design and optimization</p>
-                            <div class="skill-bar">
-                                <div class="skill-progress"></div>
-                            </div>
-                        </div>
-                        <div class="skill-card" data-skill="90">
-                            <div class="skill-icon">🎨</div>
-                            <h4>CSS</h4>
-                            <p>Modern styling and animations</p>
-                            <div class="skill-bar">
-                                <div class="skill-progress"></div>
+            
+            <!-- Hexagonal Skills Grid -->
+            <div class="hex-grid">
+                <div class="hex-item" data-skill="95">
+                    <div class="hexagon">
+                        <div class="hex-inner">
+                            <div class="hex-content">
+                                <div class="skill-icon">☕</div>
+                                <h4>Java</h4>
+                                <span class="skill-level">Expert</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="learning-section">
-                    <h3>Currently Learning</h3>
-                    <div class="learning-grid">
-                        <div class="learning-card">
-                            <div class="learning-icon">⚛️</div>
-                            <h4>React</h4>
-                            <div class="learning-progress">
-                                <div class="progress-bar" data-progress="70"></div>
+                <div class="hex-item" data-skill="88">
+                    <div class="hexagon">
+                        <div class="hex-inner">
+                            <div class="hex-content">
+                                <div class="skill-icon">🍃</div>
+                                <h4>Spring Boot</h4>
+                                <span class="skill-level">Advanced</span>
                             </div>
                         </div>
-                        <div class="learning-card">
-                            <div class="learning-icon">📘</div>
-                            <h4>TypeScript</h4>
-                            <div class="learning-progress">
-                                <div class="progress-bar" data-progress="60"></div>
+                    </div>
+                </div>
+                <div class="hex-item" data-skill="90">
+                    <div class="hexagon">
+                        <div class="hex-inner">
+                            <div class="hex-content">
+                                <div class="skill-icon">🌐</div>
+                                <h4>JavaScript</h4>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hex-item" data-skill="85">
+                    <div class="hexagon">
+                        <div class="hex-inner">
+                            <div class="hex-content">
+                                <div class="skill-icon">⚡</div>
+                                <h4>C++</h4>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hex-item" data-skill="85">
+                    <div class="hexagon">
+                        <div class="hex-inner">
+                            <div class="hex-content">
+                                <div class="skill-icon">🗃️</div>
+                                <h4>SQL</h4>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hex-item" data-skill="90">
+                    <div class="hexagon">
+                        <div class="hex-inner">
+                            <div class="hex-content">
+                                <div class="skill-icon">🎨</div>
+                                <h4>CSS</h4>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Section -->
+            <div class="learning-section">
+                <h3>Currently Leveling Up</h3>
+                <div class="learning-grid">
+                    <div class="learning-card">
+                        <div class="learning-icon">⚛️</div>
+                        <h4>React</h4>
+                        <div class="learning-progress">
+                            <div class="progress-bar" data-progress="70"></div>
                             </div>
                         </div>
                         <div class="learning-card">
@@ -396,7 +412,62 @@
         </div>
     </section>
 
-    <section id="projects" class="projects">
+    <!-- GitHub Stats Section -->
+    <section id="github-stats" class="github-stats">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">GitHub Activity</h2>
+                <div class="section-line"></div>
+                <p class="section-subtitle">Live coding statistics from my repositories</p>
+            </div>
+            <div class="github-content">
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-info">
+                            <h3 id="total-repos">--</h3>
+                            <p>Public Repositories</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-info">
+                            <h3 id="total-stars">--</h3>
+                            <p>Stars Received</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔱</div>
+                        <div class="stat-info">
+                            <h3 id="total-forks">--</h3>
+                            <p>Forks</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <h3 id="total-followers">--</h3>
+                            <p>Followers</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="github-profile-card">
+                    <div class="profile-header-github">
+                        <img id="github-avatar" src="" alt="GitHub Avatar" class="github-avatar">
+                        <div class="github-info">
+                            <h3 id="github-name">Loading...</h3>
+                            <p id="github-bio">Fetching GitHub data...</p>
+                            <a href="https://github.com/Uwami-Mgxekwa" target="_blank" class="github-link">
+                                <span>🔗 View Full Profile</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects"></section>
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Featured Projects</h2>
