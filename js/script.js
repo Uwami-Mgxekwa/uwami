@@ -133,30 +133,32 @@ function initCodeAnimation() {
 };`
         },
         {
-            language: 'python',
+            language: 'java',
             code: isMobile ?
-                `class Dev:
-  def __init__(self):
-    self.name = "Owami"
-    self.role = "Developer"
-  
-  def code(self):
-    while True:
-      self.learn()
-      self.build()` :
-                `class Developer:
-    def __init__(self):
-        self.name = "Owami"
-        self.role = "Educator"
-        self.skills = ["Java", "Python"]
+                `@SpringBootApplication
+class App {
+  public static void 
+  main(String[] args) {
+    SpringApplication
+      .run(App.class);
+  }
+}` :
+                `@SpringBootApplication
+public class Application {
     
-    def inspire(self):
-        return "Teaching & Coding"
+    public static void main(String[] args) {
+        SpringApplication.run(
+            Application.class, args
+        );
+    }
     
-    def build(self):
-        while True:
-            self.learn()
-            self.create()`
+    @Bean
+    public CommandLineRunner demo() {
+        return args -> {
+            System.out.println("Ready!");
+        };
+    }
+}`
         }
     ];
 
