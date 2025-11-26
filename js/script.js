@@ -83,61 +83,80 @@ function initCodeAnimation() {
         {
             language: 'java',
             code: isMobile ?
-                `public class Dev {
+                `class Dev {
+  String name = "Owami";
+  String role = "Dev";
+  
+  void create() {
+    while(true) {
+      code();
+      teach();
+    }
+  }
+}` :
+                `public class Developer {
     private String name = "Owami";
     private String role = "Developer";
     
-    public void create() {
+    public void createApps() {
         while(learning) {
-        code();
-        teach();
+            code();
+            teach();
+            innovate();
         }
     }
-    }` :
-                `public class Developer {
-        private String name = "Owami Mgxekwa";
-        private String role = "Software Developer";
-        
-        public void createAmazingApps() {
-            while(learning) {
-                code();
-                teach();
-                innovate();
-            }
-        }
-    }`
+}`
 
         },
         {
             language: 'javascript',
-            code: `const developer = {
+            code: isMobile ?
+                `const dev = {
+  name: 'Owami',
+  skills: ['Java', 'JS'],
+  learning: ['React'],
+  
+  build() {
+    return 'Coding!';
+  }
+};` :
+                `const developer = {
     name: 'Owami Mgxekwa',
-    skills: ['Java', 'JavaScript', 'Python', 'C++'],
-    currentlyLearning: ['React', 'TypeScript', 'C#'],
+    skills: ['Java', 'JS', 'Python'],
+    learning: ['React', 'TypeScript'],
     
-    buildAwesome: function() {
-        return this.skills.map(skill => 
-            'Creating with ' + skill
-        ).join('\\n');
+    buildAwesome() {
+        return this.skills.map(s => 
+            'Creating with ' + s
+        );
     }
 };`
         },
         {
             language: 'python',
-            code: `class Developer:
+            code: isMobile ?
+                `class Dev:
+  def __init__(self):
+    self.name = "Owami"
+    self.role = "Developer"
+  
+  def code(self):
+    while True:
+      self.learn()
+      self.build()` :
+                `class Developer:
     def __init__(self):
-        self.name = "Owami Mgxekwa"
-        self.role = "Educator & Developer"
-        self.languages = ["Java", "Python", "C++", "JS"]
+        self.name = "Owami"
+        self.role = "Educator"
+        self.skills = ["Java", "Python"]
     
-    def inspire_students(self):
-        return "Teaching is learning twice"
+    def inspire(self):
+        return "Teaching & Coding"
     
-    def code_with_passion(self):
+    def build(self):
         while True:
             self.learn()
-            self.build()
-            self.teach()`
+            self.create()`
         }
     ];
 
