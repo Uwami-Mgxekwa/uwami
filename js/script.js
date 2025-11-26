@@ -174,16 +174,22 @@ public class Application {
         const snippet = codeSnippets[currentSnippet];
         const currentText = snippet.code.substring(0, currentChar);
 
-        codeElement.innerHTML = `<code class="language-${snippet.language}">${currentText}<span class="cursor">|</span></code>`;
+        // Use textContent for smoother rendering and escape HTML
+        const escapedText = currentText
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+        
+        codeElement.innerHTML = `<code class="language-${snippet.language}">${escapedText}<span class="cursor">|</span></code>`;
 
         if (!isDeleting && currentChar < snippet.code.length) {
-            // Typing
+            // Typing - consistent speed for smoothness
             currentChar++;
-            setTimeout(typeCode, Math.random() * 50 + 30);
+            setTimeout(typeCode, 40); // Consistent 40ms for smooth typing
         } else if (isDeleting && currentChar > 0) {
-            // Deleting
+            // Deleting - faster and consistent
             currentChar--;
-            setTimeout(typeCode, 25);
+            setTimeout(typeCode, 20); // Consistent 20ms for smooth deleting
         } else if (!isDeleting && currentChar === snippet.code.length) {
             // Finished typing, wait then start deleting
             if (!isWaiting) {
@@ -192,7 +198,7 @@ public class Application {
                     isDeleting = true;
                     isWaiting = false;
                     typeCode();
-                }, 3000);
+                }, 2500); // Reduced wait time
             }
         } else if (isDeleting && currentChar === 0) {
             // Finished deleting, move to next snippet
@@ -203,7 +209,7 @@ public class Application {
     }
 
     // Start the animation
-    setTimeout(typeCode, 2000);
+    setTimeout(typeCode, 1500);
 }
 
 // Counter Animation for Stats
