@@ -54,6 +54,9 @@ function initTypewriter() {
     const typewriterElement = document.getElementById('typewriter');
     if (!typewriterElement) return;
 
+    if (typewriterElement.dataset.initialized) return;
+    typewriterElement.dataset.initialized = 'true';
+
     const text = 'Owami Mgxekwa';
     let i = 0;
 
