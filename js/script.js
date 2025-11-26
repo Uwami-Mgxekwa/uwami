@@ -684,7 +684,6 @@ function initThemeToggle() {
     // Load saved theme from localStorage
     const savedTheme = localStorage.getItem('theme') || 'dark';
     htmlElement.setAttribute('data-theme', savedTheme);
-    console.log('Initial theme:', savedTheme);
 
     // Toggle theme on button click
     themeToggle.addEventListener('click', (e) => {
@@ -693,14 +692,10 @@ function initThemeToggle() {
         
         const currentTheme = htmlElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-        console.log('Switching from', currentTheme, 'to', newTheme);
         
         htmlElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
     });
-    
-    console.log('Theme toggle initialized successfully');
 }
 
 // ============================================
