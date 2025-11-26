@@ -122,12 +122,18 @@ body {
     position: relative;
     overflow: hidden;
     z-index: 1001;
+    outline: none;
+    padding: 0;
 }
 
 .theme-toggle:hover {
     transform: scale(1.1);
     border-color: var(--primary);
     box-shadow: 0 0 20px rgba(241, 196, 15, 0.3);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
 }
 
 .theme-toggle .sun-icon,
@@ -2872,5 +2878,3 @@ section {
         grid-template-columns: 1fr;
     }
 }
-
-/* Project cards - simple hover effect */

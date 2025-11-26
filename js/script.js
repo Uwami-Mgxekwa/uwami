@@ -519,23 +519,6 @@ function initThemeToggle() {
     }
 }
 
-// Initialize all functions when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    initNavigation();
-    initTypewriter();
-    initCodeAnimation();
-    initCounters();
-    initScrollAnimations();
-    initSkillBars();
-    initTimelineAnimations();
-    initSmoothScrolling();
-    initParallaxEffect();
-    initContactFormInteractions();
-    initThemeToggle();
-});
-
-
-
 // ============================================
 // CUSTOM CURSOR
 // ============================================
@@ -685,6 +668,40 @@ function animateCounter(elementId, target) {
 }
 
 
+
+// ============================================
+// THEME TOGGLE
+// ============================================
+function initThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+
+    if (!themeToggle) {
+        console.error('Theme toggle button not found!');
+        return;
+    }
+
+    // Load saved theme from localStorage
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    htmlElement.setAttribute('data-theme', savedTheme);
+    console.log('Initial theme:', savedTheme);
+
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        console.log('Switching from', currentTheme, 'to', newTheme);
+        
+        htmlElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+    
+    console.log('Theme toggle initialized successfully');
+}
 
 // ============================================
 // INITIALIZE ALL NEW FEATURES
