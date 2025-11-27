@@ -533,31 +533,54 @@ function initCustomCursor() {
 
     let mouseX = 0, mouseY = 0;
     let outlineX = 0, outlineY = 0;
+    let isMoving = false;
+
+    // Use transform instead of left/top for better performance
+    function updateCursorPosition(element, x, y) {
+        element.style.transform = `translate(${x}px, ${y}px)`;
+    }
 
     // Show cursor after first move
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
 
-        cursorDot.classList.add('active');
-        cursorOutline.classList.add('active');
+        if (!isMoving) {
+            cursorDot.classList.add('active');
+            cursorOutline.classList.add('active');
+            isMoving = true;
+        }
 
-        // Dot follows immediately
-        cursorDot.style.left = mouseX + 'px';
-        cursorDot.style.top = mouseY + 'px';
+        // Dot follows immediately with transform
+        updateCursorPosition(cursorDot, mouseX, mouseY);
     });
 
-    // Smooth outline follow
+    // Smooth outline follow with optimized animation
+    let animationId;
     function animateOutline() {
-        outlineX += (mouseX - outlineX) * 0.15;
-        outlineY += (mouseY - outlineY) * 0.15;
+        // Smooth easing
+        const dx = mouseX - outlineX;
+        const dy = mouseY - outlineY;
+        
+        outlineX += dx * 0.2; // Increased from 0.15 for snappier response
+        outlineY += dy * 0.2;
 
-        cursorOutline.style.left = outlineX + 'px';
-        cursorOutline.style.top = outlineY + 'px';
+        updateCursorPosition(cursorOutline, outlineX, outlineY);
 
-        requestAnimationFrame(animateOutline);
+        // Only continue animation if cursor is moving significantly
+        if (Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1) {
+            animationId = requestAnimationFrame(animateOutline);
+        } else {
+            isMoving = false;
+        }
     }
-    animateOutline();
+
+    // Start animation on mouse move
+    document.addEventListener('mousemove', () => {
+        if (!animationId) {
+            animationId = requestAnimationFrame(animateOutline);
+        }
+    });
 
     // Hover effects
     const hoverElements = document.querySelectorAll('a, button, .project-card, .skill-card, .hex-item, .stat-card');
@@ -576,6 +599,11 @@ function initCustomCursor() {
     document.addEventListener('mouseleave', () => {
         cursorDot.classList.remove('active');
         cursorOutline.classList.remove('active');
+        isMoving = false;
+        if (animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        }
     });
 }
 

@@ -2547,9 +2547,8 @@ section {
     left: 0;
     border-radius: 50%;
     opacity: 0;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     z-index: 10000;
+    will-change: transform;
 }
 
 .cursor-dot {
@@ -2557,13 +2556,16 @@ section {
     height: 8px;
     background: var(--primary);
     box-shadow: 0 0 10px var(--primary);
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease-in-out;
 }
 
 .cursor-outline {
     width: 40px;
     height: 40px;
     border: 2px solid var(--primary);
-    transition: all 0.15s ease-out;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease-in-out, width 0.2s ease, height 0.2s ease, background 0.2s ease;
 }
 
 .cursor-dot.active,
