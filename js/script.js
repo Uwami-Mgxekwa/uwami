@@ -533,53 +533,44 @@ function initCustomCursor() {
 
     let mouseX = 0, mouseY = 0;
     let outlineX = 0, outlineY = 0;
-    let isMoving = false;
+    let isAnimating = false;
 
     // Use transform instead of left/top for better performance
     function updateCursorPosition(element, x, y) {
         element.style.transform = `translate(${x}px, ${y}px)`;
     }
 
-    // Show cursor after first move
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
-        if (!isMoving) {
-            cursorDot.classList.add('active');
-            cursorOutline.classList.add('active');
-            isMoving = true;
-        }
-
-        // Dot follows immediately with transform
-        updateCursorPosition(cursorDot, mouseX, mouseY);
-    });
-
-    // Smooth outline follow with optimized animation
-    let animationId;
+    // Smooth outline follow - runs continuously
     function animateOutline() {
         // Smooth easing
         const dx = mouseX - outlineX;
         const dy = mouseY - outlineY;
         
-        outlineX += dx * 0.2; // Increased from 0.15 for snappier response
+        outlineX += dx * 0.2;
         outlineY += dy * 0.2;
 
         updateCursorPosition(cursorOutline, outlineX, outlineY);
 
-        // Only continue animation if cursor is moving significantly
-        if (Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1) {
-            animationId = requestAnimationFrame(animateOutline);
-        } else {
-            isMoving = false;
-        }
+        // Always continue the animation loop
+        requestAnimationFrame(animateOutline);
     }
 
-    // Start animation on mouse move
-    document.addEventListener('mousemove', () => {
-        if (!animationId) {
-            animationId = requestAnimationFrame(animateOutline);
+    // Show cursor and update position on mouse move
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        // Show cursors on first move
+        if (!isAnimating) {
+            cursorDot.classList.add('active');
+            cursorOutline.classList.add('active');
+            isAnimating = true;
+            // Start the continuous animation loop
+            animateOutline();
         }
+
+        // Dot follows immediately with transform
+        updateCursorPosition(cursorDot, mouseX, mouseY);
     });
 
     // Hover effects
