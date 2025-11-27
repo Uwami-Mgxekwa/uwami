@@ -2488,6 +2488,10 @@ section {
 /* ============================================
    CUSTOM CURSOR
    ============================================ */
+
+/* ============================================
+   CUSTOM CURSOR
+   ============================================ */
 .cursor-dot,
 .cursor-outline {
     pointer-events: none;
@@ -2496,6 +2500,7 @@ section {
     left: 0;
     border-radius: 50%;
     opacity: 0;
+    transition: opacity 0.3s ease-in-out;
     z-index: 10000;
     will-change: transform;
 }
@@ -2505,16 +2510,13 @@ section {
     height: 8px;
     background: var(--primary);
     box-shadow: 0 0 10px var(--primary);
-    transform: translate(-50%, -50%);
-    transition: opacity 0.3s ease-in-out;
 }
 
 .cursor-outline {
     width: 40px;
     height: 40px;
     border: 2px solid var(--primary);
-    transform: translate(-50%, -50%);
-    transition: opacity 0.3s ease-in-out, width 0.2s ease, height 0.2s ease, background 0.2s ease;
+    transition: all 0.15s ease-out;
 }
 
 .cursor-dot.active,
@@ -2532,25 +2534,11 @@ section {
 @media (max-width: 768px) {
     .cursor-dot,
     .cursor-outline {
-        display: none;
+        display: none !important;
     }
 }
-
-/* Logo - simple hover */
-.nav-logo {
-    position: relative;
-    cursor: pointer;
-}
-
-.logo-text {
-    transition: all 0.3s ease;
-}
-
-.nav-logo:hover .logo-text {
-    transform: scale(1.05);
-}
-
-/* ============================================
+/*
+ ============================================
    HEXAGONAL SKILLS GRID
    ============================================ */
 .hex-grid {
@@ -2838,75 +2826,5 @@ section {
 @media (max-width: 480px) {
     .stats-cards {
         grid-template-columns: 1fr;
-    }
-}
-/*
- Learning Section Styles */
-.learning-section {
-    margin-top: 4rem;
-    text-align: center;
-}
-
-.learning-section h3 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: var(--secondary);
-}
-
-.learning-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.learning-card {
-    background: var(--card-bg);
-    padding: 2rem;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    text-align: center;
-    transition: var(--transition);
-}
-
-.learning-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(255, 61, 113, 0.2);
-    border-color: var(--secondary);
-}
-
-.learning-icon {
-    font-size: 3rem !important;
-    margin-bottom: 1rem;
-    display: block;
-}
-
-.learning-card h4 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-}
-
-.learning-progress {
-    width: 100%;
-    height: 6px;
-    background: var(--border-color);
-    border-radius: 3px;
-    overflow: hidden;
-}
-
-.progress-bar {
-    height: 100%;
-    background: var(--gradient-secondary);
-    border-radius: 3px;
-    width: 0;
-    transition: width 1s ease-in-out;
-}
-
-@media (max-width: 768px) {
-    .learning-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
     }
 }

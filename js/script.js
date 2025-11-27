@@ -535,30 +535,16 @@ function initCustomCursor() {
     let outlineX = 0, outlineY = 0;
     let isAnimating = false;
 
-    // Use transform instead of left/top for better performance
-    function updateCursorPosition(element, x, y) {
-        element.style.transform = `translate(${x}px, ${y}px)`;
-    }
-
     // Smooth outline follow - runs continuously
     function animateOutline() {
-        // Smooth easing
         const dx = mouseX - outlineX;
         const dy = mouseY - outlineY;
-        const distance = Math.sqrt(dx * dx + dy * dy);
         
-        // Snap to cursor when very close (within 0.5px)
-        if (distance < 0.5) {
-            outlineX = mouseX;
-            outlineY = mouseY;
-        } else {
-            outlineX += dx * 0.2;
-            outlineY += dy * 0.2;
-        }
+        outlineX += dx * 0.15;
+        outlineY += dy * 0.15;
 
-        updateCursorPosition(cursorOutline, outlineX, outlineY);
+        cursorOutline.style.transform = `translate(${outlineX}px, ${outlineY}px)`;
 
-        // Always continue the animation loop
         requestAnimationFrame(animateOutline);
     }
 
@@ -572,16 +558,15 @@ function initCustomCursor() {
             cursorDot.classList.add('active');
             cursorOutline.classList.add('active');
             isAnimating = true;
-            // Start the continuous animation loop
             animateOutline();
         }
 
-        // Dot follows immediately with transform
-        updateCursorPosition(cursorDot, mouseX, mouseY);
+        // Dot follows immediately
+        cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
     });
 
     // Hover effects
-    const hoverElements = document.querySelectorAll('a, button, .project-card, .skill-card, .hex-item, .stat-card');
+    const hoverElements = document.querySelectorAll('a, button, .project-card, .hex-item, .stat-card, .learning-card');
     
     hoverElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
@@ -597,10 +582,13 @@ function initCustomCursor() {
     document.addEventListener('mouseleave', () => {
         cursorDot.classList.remove('active');
         cursorOutline.classList.remove('active');
-        isMoving = false;
-        if (animationId) {
-            cancelAnimationFrame(animationId);
-            animationId = null;
+    });
+
+    // Show cursor when entering window
+    document.addEventListener('mouseenter', () => {
+        if (isAnimating) {
+            cursorDot.classList.add('active');
+            cursorOutline.classList.add('active');
         }
     });
 }
