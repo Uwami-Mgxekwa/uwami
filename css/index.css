@@ -266,57 +266,6 @@ body {
     transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Theme Toggle Button */
-.theme-toggle {
-    background: var(--card-bg);
-    border: 2px solid var(--border-color);
-    border-radius: 50px;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-    margin-right: auto;
-    margin-left: 2rem;
-}
-
-.theme-toggle:hover {
-    border-color: var(--primary);
-    box-shadow: 0 0 20px rgba(241, 196, 15, 0.3);
-    transform: scale(1.05);
-}
-
-.theme-toggle .sun-icon,
-.theme-toggle .moon-icon {
-    font-size: 1.5rem;
-    position: absolute;
-    transition: all 0.3s ease;
-}
-
-.theme-toggle .sun-icon {
-    opacity: 0;
-    transform: rotate(180deg) scale(0);
-}
-
-.theme-toggle .moon-icon {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-}
-
-[data-theme="light"] .theme-toggle .sun-icon {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-}
-
-[data-theme="light"] .theme-toggle .moon-icon {
-    opacity: 0;
-    transform: rotate(-180deg) scale(0);
-}
-
 /* Hero Section */
 .hero {
     min-height: 100vh;
