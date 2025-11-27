@@ -545,9 +545,16 @@ function initCustomCursor() {
         // Smooth easing
         const dx = mouseX - outlineX;
         const dy = mouseY - outlineY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
         
-        outlineX += dx * 0.2;
-        outlineY += dy * 0.2;
+        // Snap to cursor when very close (within 0.5px)
+        if (distance < 0.5) {
+            outlineX = mouseX;
+            outlineY = mouseY;
+        } else {
+            outlineX += dx * 0.2;
+            outlineY += dy * 0.2;
+        }
 
         updateCursorPosition(cursorOutline, outlineX, outlineY);
 
