@@ -2828,3 +2828,175 @@ section {
         grid-template-columns: 1fr;
     }
 }
+
+/* ============================================
+   CONTACT SECTION
+   ============================================ */
+.contact {
+    padding: 8rem 0;
+    background: var(--bg-darker);
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.contact-info h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.contact-info p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    background: rgba(241, 196, 15, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(241, 196, 15, 0.2);
+    color: var(--primary);
+}
+
+.contact-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+}
+
+.contact-text a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.contact-text a:hover {
+    color: var(--text-primary);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.contact-button {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(241, 196, 15, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.contact-button:hover::before {
+    left: 100%;
+}
+
+.contact-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(241, 196, 15, 0.2);
+    border-color: var(--primary);
+}
+
+.button-icon {
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--bg-dark);
+}
+
+.button-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-title {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.button-subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.contact-button.whatsapp:hover .button-icon {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+.contact-button.github:hover .button-icon {
+    background: linear-gradient(135deg, #24292e, #586069);
+}
+
+.contact-button.phone:hover .button-icon {
+    background: var(--gradient-secondary);
+}
+
+.contact-button.email:hover .button-icon {
+    background: linear-gradient(135deg, #EA4335, #C5221F);
+}
+
+/* Contact Section Responsive */
+@media (max-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
