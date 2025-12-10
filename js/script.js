@@ -124,7 +124,7 @@ function initCodeAnimation() {
   }
 };` :
                 `const developer = {
-    name: 'Owami Mgxekwa',
+    name: 'Uwami Mgxekwa',
     skills: ['Java', 'JS', 'Python'],
     learning: ['React', 'TypeScript'],
     
@@ -656,7 +656,7 @@ async function fetchGitHubStats() {
         document.getElementById('total-stars').textContent = '100+';
         document.getElementById('total-forks').textContent = '20+';
         document.getElementById('total-followers').textContent = '50+';
-        document.getElementById('github-name').textContent = 'Owami Mgxekwa';
+        document.getElementById('github-name').textContent = 'Uwami Mgxekwa';
         document.getElementById('github-bio').textContent = 'Software Developer & IT Systems Development Lecturer';
     }
 }
