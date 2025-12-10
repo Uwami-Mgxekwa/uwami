@@ -57,7 +57,7 @@ function initTypewriter() {
     if (typewriterElement.dataset.initialized) return;
     typewriterElement.dataset.initialized = 'true';
 
-    const text = 'Owami Mgxekwa';
+    const text = 'Uwami Mgxekwa';
     let i = 0;
 
     // Clear the text first
@@ -87,7 +87,7 @@ function initCodeAnimation() {
             language: 'java',
             code: isMobile ?
                 `class Dev {
-  String name = "Owami";
+  String name = "Uwami";
   String role = "Dev";
   
   void create() {
