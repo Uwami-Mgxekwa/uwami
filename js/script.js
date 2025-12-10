@@ -98,7 +98,7 @@ function initCodeAnimation() {
   }
 }` :
                 `public class Developer {
-    private String name = "Owami";
+    private String name = "Uwami";
     private String role = "Developer";
     
     public void createApps() {
@@ -115,7 +115,7 @@ function initCodeAnimation() {
             language: 'javascript',
             code: isMobile ?
                 `const dev = {
-  name: 'Owami',
+  name: 'Uwami',
   skills: ['Java', 'JS'],
   learning: ['React'],
   
