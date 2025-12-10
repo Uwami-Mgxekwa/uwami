@@ -40,9 +40,9 @@ function initChatbot() {
     };
 
     const responses = {
-        greetings: "Hello! 👋 I'm Owami's personal assistant. I can tell you about:\n\n• His technical skills and expertise\n• Teaching experience at Gauteng City College\n• Projects and portfolio\n• How to get in touch\n\nWhat would you like to know?",
+        greetings: "Hello! 👋 I'm Uwami's personal assistant. I can tell you about:\n\n• His technical skills and expertise\n• Teaching experience at Gauteng City College\n• Projects and portfolio\n• How to get in touch\n\nWhat would you like to know?",
         
-        skills: "Owami is proficient in multiple technologies:\n\n💎 Core Expertise:\n• Java & Java Swing (Primary)\n• JavaScript (ES6+)\n• C++\n• Python\n• SQL\n• CSS3\n\n🌱 Currently Learning:\n• React\n• TypeScript\n• C#\n• Vite\n\nHe specializes in desktop applications with Java Swing and is expanding into modern web development!",
+        skills: "Uwami is proficient in multiple technologies:\n\n💎 Core Expertise:\n• Java & Java Swing (Primary)\n• JavaScript (ES6+)\n• C++\n• Python\n• SQL\n• CSS3\n\n🌱 Currently Learning:\n• React\n• TypeScript\n• C#\n• Vite\n\nHe specializes in desktop applications with Java Swing and is expanding into modern web development!",
         
         java: "Java is Owami's primary strength! 💪\n\n✨ Expertise includes:\n• Java Swing GUI development\n• Desktop application architecture\n• Object-Oriented Programming\n• Database integration with Java\n• Complex system design\n\nHe's built numerous Java applications including student management systems and inventory trackers. Would you like to see his projects?",
         
