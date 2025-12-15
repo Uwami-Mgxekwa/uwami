@@ -2557,17 +2557,6 @@ section {
     cursor: grab;
 }
 
-.skill-3d-icon {
-    position: absolute;
-    pointer-events: none;
-    z-index: 1000;
-    transition: all 0.3s ease;
-}
-
-.skill-3d-icon:hover {
-    transform: scale(1.1) !important;
-}
-
 .skills-3d-container:active {
     cursor: grabbing;
 }
