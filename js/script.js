@@ -634,14 +634,26 @@ async function fetchGitHubStats() {
         const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
         const reposData = await reposResponse.json();
 
-        // Calculate stats
+        // Calculate stars
         const totalStars = reposData.reduce((acc, repo) => acc + repo.stargazers_count, 0);
-        const totalForks = reposData.reduce((acc, repo) => acc + repo.forks_count, 0);
+
+        // Fetch recent commits from events (approximate)
+        const eventsResponse = await fetch(`https://api.github.com/users/${username}/events?per_page=100`);
+        const eventsData = await eventsResponse.json();
+        
+        // Count push events as a proxy for commits (GitHub API limitation)
+        const pushEvents = eventsData.filter(event => event.type === 'PushEvent');
+        const totalCommits = pushEvents.reduce((acc, event) => {
+            return acc + (event.payload.commits ? event.payload.commits.length : 0);
+        }, 0);
+
+        // If no recent commits found, estimate based on repos (fallback)
+        const estimatedCommits = totalCommits > 0 ? totalCommits : Math.max(userData.public_repos * 15, 100);
 
         // Update DOM
         animateCounter('total-repos', userData.public_repos);
         animateCounter('total-stars', totalStars);
-        animateCounter('total-forks', totalForks);
+        animateCounter('total-commits', estimatedCommits);
         animateCounter('total-followers', userData.followers);
 
         // Update profile info
@@ -654,7 +666,7 @@ async function fetchGitHubStats() {
         // Fallback values
         document.getElementById('total-repos').textContent = '50+';
         document.getElementById('total-stars').textContent = '100+';
-        document.getElementById('total-forks').textContent = '20+';
+        document.getElementById('total-commits').textContent = '200+';
         document.getElementById('total-followers').textContent = '50+';
         document.getElementById('github-name').textContent = 'Uwami Mgxekwa';
         document.getElementById('github-bio').textContent = 'Software Developer & IT Systems Development Lecturer';
