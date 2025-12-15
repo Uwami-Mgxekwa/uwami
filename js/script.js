@@ -725,6 +725,71 @@ function initThemeToggle() {
 }
 
 // ============================================
+// 3D SKILLS INTEGRATION
+// ============================================
+function init3DSkillsWithFallback() {
+    const skills3DContainer = document.getElementById('skills-3d-container');
+    const hexGridFallback = document.querySelector('.hex-grid-fallback');
+    
+    if (!skills3DContainer) return;
+    
+    // Check if Three.js is available
+    if (typeof THREE !== 'undefined' && typeof Skills3D !== 'undefined') {
+        try {
+            // Initialize 3D skills
+            new Skills3D();
+            console.log('3D Skills initialized successfully');
+        } catch (error) {
+            console.warn('3D Skills failed to initialize, falling back to 2D:', error);
+            show2DFallback();
+        }
+    } else {
+        console.warn('Three.js not available, showing 2D fallback');
+        show2DFallback();
+    }
+    
+    function show2DFallback() {
+        if (skills3DContainer) {
+            skills3DContainer.style.display = 'none';
+        }
+        if (hexGridFallback) {
+            hexGridFallback.style.display = 'flex';
+            populate2DSkills();
+        }
+    }
+    
+    function populate2DSkills() {
+        const skillsData = [
+            { name: 'Java', level: 95, icon: 'devicon-java-plain colored' },
+            { name: 'Spring Boot', level: 88, icon: 'devicon-spring-plain colored' },
+            { name: 'JavaScript', level: 90, icon: 'devicon-javascript-plain colored' },
+            { name: 'C++', level: 85, icon: 'devicon-cplusplus-plain colored' },
+            { name: 'SQL', level: 85, icon: 'devicon-mysql-plain colored' },
+            { name: 'CSS', level: 90, icon: 'devicon-css3-plain colored' }
+        ];
+        
+        if (hexGridFallback) {
+            hexGridFallback.innerHTML = skillsData.map(skill => `
+                <div class="hex-item" data-skill="${skill.level}">
+                    <div class="hexagon">
+                        <div class="hex-inner">
+                            <div class="hex-content">
+                                <i class="${skill.icon} skill-icon"></i>
+                                <h4>${skill.name}</h4>
+                                <span class="skill-level">${skill.level >= 90 ? 'Expert' : 'Advanced'}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Initialize 2D hex animations
+            initHexSkills();
+        }
+    }
+}
+
+// ============================================
 // INITIALIZE ALL NEW FEATURES
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -745,4 +810,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initCustomCursor();
     initHexSkills();
     fetchGitHubStats();
+    
+    // Initialize 3D skills with fallback
+    setTimeout(() => {
+        init3DSkillsWithFallback();
+    }, 1000); // Small delay to ensure Three.js is loaded
 });

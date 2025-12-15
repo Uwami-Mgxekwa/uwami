@@ -16,6 +16,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <!-- Font Awesome for contact icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Three.js for 3D graphics -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Tween.js for smooth animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+  
     <!-- Standard favicon -->
     <link rel="icon" href="./assets/logo.png" type="image/x-icon">
 
@@ -312,11 +317,21 @@
             <div class="section-header">
                 <h2 class="section-title">Skills Arsenal</h2>
                 <div class="section-line"></div>
-                <p class="section-subtitle">Hexagonal mastery across the stack</p>
+                <p class="section-subtitle">Interactive 3D hexagonal mastery across the stack</p>
             </div>
             
-            <!-- Hexagonal Skills Grid -->
-            <div class="hex-grid">
+            <!-- 3D Skills Container -->
+            <div class="skills-3d-wrapper">
+                <div id="skills-3d-container" class="skills-3d-container">
+                    <!-- Three.js 3D scene will be rendered here -->
+                </div>
+                <div class="skills-3d-instructions">
+                    <p>🖱️ Move your mouse to interact • 🖱️ Click hexagons for details</p>
+                </div>
+            </div>
+            
+            <!-- Fallback: Traditional Hexagonal Skills Grid -->
+            <div class="hex-grid hex-grid-fallback" style="display: none;">
                 <div class="hex-item" data-skill="95">
                     <div class="hexagon">
                         <div class="hex-inner">
@@ -773,6 +788,7 @@
     </div>
 
     <script src="./js/chatbot.js"></script>
+    <script src="./js/skills-3d.js"></script>
     <script src="./js/script.js"></script>
 
 </body>
