@@ -2557,6 +2557,17 @@ section {
     cursor: grab;
 }
 
+.skill-3d-icon {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.skill-3d-icon:hover {
+    transform: scale(1.1) !important;
+}
+
 .skills-3d-container:active {
     cursor: grabbing;
 }
@@ -2648,15 +2659,34 @@ section {
 }
 
 .skill-popup-icon {
-    font-size: 3rem;
     width: 80px;
     height: 80px;
-    background: var(--gradient-primary);
+    background: var(--card-bg);
+    border: 3px solid var(--primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 10px 30px rgba(241, 196, 15, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-popup-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(241, 196, 15, 0.1) 0%, transparent 70%);
+    z-index: 1;
+}
+
+.skill-popup-icon i {
+    font-size: 3rem;
+    z-index: 2;
+    position: relative;
 }
 
 .skill-popup-header h3 {

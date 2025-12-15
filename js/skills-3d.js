@@ -16,12 +16,12 @@ class Skills3D {
         
         // Skills data with colors and proficiency levels
         this.skillsData = [
-            { name: 'Java', level: 95, color: 0xED8B00, icon: '☕' },
-            { name: 'Spring Boot', level: 88, color: 0x6DB33F, icon: '🍃' },
-            { name: 'JavaScript', level: 90, color: 0xF7DF1E, icon: '⚡' },
-            { name: 'C++', level: 85, color: 0x00599C, icon: '⚙️' },
-            { name: 'SQL', level: 85, color: 0x336791, icon: '🗄️' },
-            { name: 'CSS', level: 90, color: 0x1572B6, icon: '🎨' }
+            { name: 'Java', level: 95, color: 0xED8B00, icon: 'devicon-java-plain', iconColor: '#ED8B00' },
+            { name: 'Spring Boot', level: 88, color: 0x6DB33F, icon: 'devicon-spring-plain', iconColor: '#6DB33F' },
+            { name: 'JavaScript', level: 90, color: 0xF7DF1E, icon: 'devicon-javascript-plain', iconColor: '#F7DF1E' },
+            { name: 'C++', level: 85, color: 0x00599C, icon: 'devicon-cplusplus-plain', iconColor: '#00599C' },
+            { name: 'SQL', level: 85, color: 0x336791, icon: 'devicon-mysql-plain', iconColor: '#336791' },
+            { name: 'CSS', level: 90, color: 0x1572B6, icon: 'devicon-css3-plain', iconColor: '#1572B6' }
         ];
         
         this.init();
@@ -151,28 +151,29 @@ class Skills3D {
     }
     
     createTextLabel(hexagon, skill) {
-        // Create canvas for text texture
+        // Create canvas for text and icon texture
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
         canvas.width = 256;
-        canvas.height = 128;
+        canvas.height = 180;
         
-        // Style the text
-        context.fillStyle = 'rgba(0, 0, 0, 0)';
-        context.fillRect(0, 0, canvas.width, canvas.height);
+        // Clear canvas with transparent background
+        context.clearRect(0, 0, canvas.width, canvas.height);
         
-        context.fillStyle = '#ffffff';
-        context.font = 'bold 24px Inter, sans-serif';
-        context.textAlign = 'center';
-        context.textBaseline = 'middle';
+        // Draw a simple geometric icon based on skill type
+        this.drawSkillIcon(context, skill, canvas.width / 2, 40);
         
         // Draw skill name
-        context.fillText(skill.name, canvas.width / 2, canvas.height / 2 - 15);
+        context.fillStyle = '#ffffff';
+        context.font = 'bold 20px Inter, sans-serif';
+        context.textAlign = 'center';
+        context.textBaseline = 'middle';
+        context.fillText(skill.name, canvas.width / 2, canvas.height / 2 + 20);
         
         // Draw level
-        context.font = '16px Inter, sans-serif';
+        context.font = '14px Inter, sans-serif';
         context.fillStyle = '#f1c40f';
-        context.fillText(`${skill.level}%`, canvas.width / 2, canvas.height / 2 + 15);
+        context.fillText(`${skill.level}%`, canvas.width / 2, canvas.height / 2 + 45);
         
         // Create texture and material
         const texture = new THREE.CanvasTexture(canvas);
@@ -182,16 +183,116 @@ class Skills3D {
             alphaTest: 0.1
         });
         
-        const labelGeometry = new THREE.PlaneGeometry(2, 1);
+        const labelGeometry = new THREE.PlaneGeometry(2.5, 1.8);
         const label = new THREE.Mesh(labelGeometry, labelMaterial);
         
         // Position label above hexagon
         label.position.copy(hexagon.position);
-        label.position.y += 1.8;
+        label.position.y += 2.2;
         label.lookAt(this.camera.position);
         
         hexagon.userData.label = label;
         this.scene.add(label);
+    }
+    
+    drawSkillIcon(context, skill, x, y) {
+        const size = 32;
+        context.fillStyle = skill.iconColor;
+        context.strokeStyle = skill.iconColor;
+        context.lineWidth = 3;
+        
+        switch (skill.name) {
+            case 'Java':
+                // Draw coffee cup shape
+                context.beginPath();
+                context.roundRect(x - size/2, y - size/2, size, size * 0.8, 4);
+                context.fill();
+                // Handle
+                context.beginPath();
+                context.arc(x + size/2 + 4, y, size/4, Math.PI * 0.3, Math.PI * 1.7, false);
+                context.stroke();
+                // Steam lines
+                context.beginPath();
+                context.moveTo(x - 8, y - size/2 - 4);
+                context.lineTo(x - 8, y - size/2 - 12);
+                context.moveTo(x, y - size/2 - 4);
+                context.lineTo(x, y - size/2 - 12);
+                context.moveTo(x + 8, y - size/2 - 4);
+                context.lineTo(x + 8, y - size/2 - 12);
+                context.stroke();
+                break;
+                
+            case 'Spring Boot':
+                // Draw leaf shape
+                context.beginPath();
+                context.ellipse(x, y, size/2, size/3, Math.PI/4, 0, Math.PI * 2);
+                context.fill();
+                // Leaf vein
+                context.beginPath();
+                context.moveTo(x - size/3, y + size/4);
+                context.lineTo(x + size/3, y - size/4);
+                context.strokeStyle = '#ffffff';
+                context.lineWidth = 2;
+                context.stroke();
+                break;
+                
+            case 'JavaScript':
+                // Draw JS letters
+                context.font = 'bold 28px Arial';
+                context.fillStyle = '#000000';
+                context.fillRect(x - size/2, y - size/2, size, size);
+                context.fillStyle = skill.iconColor;
+                context.textAlign = 'center';
+                context.textBaseline = 'middle';
+                context.fillText('JS', x, y);
+                break;
+                
+            case 'C++':
+                // Draw C++ text
+                context.font = 'bold 20px monospace';
+                context.fillStyle = skill.iconColor;
+                context.textAlign = 'center';
+                context.textBaseline = 'middle';
+                context.fillText('C++', x, y);
+                break;
+                
+            case 'SQL':
+                // Draw database cylinder
+                context.beginPath();
+                context.ellipse(x, y - size/3, size/2, size/6, 0, 0, Math.PI * 2);
+                context.fill();
+                context.fillRect(x - size/2, y - size/3, size, size/1.5);
+                context.beginPath();
+                context.ellipse(x, y + size/4, size/2, size/6, 0, 0, Math.PI * 2);
+                context.fill();
+                break;
+                
+            case 'CSS':
+                // Draw CSS shield
+                context.beginPath();
+                context.moveTo(x, y - size/2);
+                context.lineTo(x + size/2, y - size/4);
+                context.lineTo(x + size/3, y + size/2);
+                context.lineTo(x, y + size/3);
+                context.lineTo(x - size/3, y + size/2);
+                context.lineTo(x - size/2, y - size/4);
+                context.closePath();
+                context.fill();
+                // CSS text
+                context.font = 'bold 12px Arial';
+                context.fillStyle = '#ffffff';
+                context.textAlign = 'center';
+                context.textBaseline = 'middle';
+                context.fillText('CSS', x, y);
+                break;
+                
+            default:
+                // Default circle
+                context.beginPath();
+                context.arc(x, y, size/2, 0, Math.PI * 2);
+                context.fill();
+                break;
+        }
     }
     
     setupEventListeners() {
@@ -285,7 +386,9 @@ class Skills3D {
             <div class="skill-popup-content">
                 <button class="skill-popup-close">&times;</button>
                 <div class="skill-popup-header">
-                    <span class="skill-popup-icon">${skill.icon}</span>
+                    <div class="skill-popup-icon">
+                        <i class="${skill.icon} colored" style="color: ${skill.iconColor};"></i>
+                    </div>
                     <h3>${skill.name}</h3>
                 </div>
                 <div class="skill-popup-level">
@@ -357,7 +460,7 @@ class Skills3D {
             // Update label position
             if (userData.label) {
                 userData.label.position.copy(hexagon.position);
-                userData.label.position.y += 1.8;
+                userData.label.position.y += 2.2;
                 userData.label.lookAt(this.camera.position);
             }
         });
