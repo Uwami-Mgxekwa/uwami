@@ -212,45 +212,6 @@ public class Application {
     setTimeout(typeCode, 1500);
 }
 
-// Counter Animation for Stats
-function initCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    const observerOptions = {
-        threshold: 0.7
-    };
-
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounter(entry.target);
-                counterObserver.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    counters.forEach(counter => {
-        counterObserver.observe(counter);
-    });
-
-    function animateCounter(counter) {
-        const target = parseInt(counter.getAttribute('data-count'));
-        const increment = target / 50;
-        let current = 0;
-
-        const updateCounter = () => {
-            if (current < target) {
-                current += increment;
-                counter.textContent = Math.ceil(current);
-                requestAnimationFrame(updateCounter);
-            } else {
-                counter.textContent = target;
-            }
-        };
-
-        updateCounter();
-    }
-}
-
 // Scroll Animations
 function initScrollAnimations() {
     const animatedElements = document.querySelectorAll('.about-card, .skill-card, .project-card, .timeline-item');
@@ -443,7 +404,6 @@ if (typeof module !== 'undefined' && module.exports) {
         initNavigation,
         initTypewriter,
         initCodeAnimation,
-        initCounters,
         initScrollAnimations,
         initTimelineAnimations,
         initSmoothScrolling,
@@ -752,7 +712,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initTypewriter();
     initCodeAnimation();
-    initCounters();
     initScrollAnimations();
     initTimelineAnimations();
     initSmoothScrolling();

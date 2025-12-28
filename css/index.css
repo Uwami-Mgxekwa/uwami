@@ -129,7 +129,6 @@ body {
 .theme-toggle:hover {
     transform: scale(1.1);
     border-color: var(--primary);
-    box-shadow: 0 0 20px rgba(241, 196, 15, 0.3);
 }
 
 .theme-toggle:active {
@@ -505,7 +504,6 @@ body {
     border-radius: 12px;
     border: 1px solid var(--border-color);
     overflow: hidden;
-    box-shadow: var(--shadow-glow);
     width: 100%;
     max-width: 500px;
     max-height: 350px;
@@ -697,7 +695,6 @@ body {
 
 .about-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 40px rgba(0, 245, 255, 0.2);
 }
 
 .about-card h3 {
@@ -721,7 +718,6 @@ body {
     border-radius: 20px;
     padding: 2rem;
     border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-glow);
     width: 100%;
     max-width: 350px;
 }
@@ -910,7 +906,6 @@ body {
 
 .learning-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(255, 61, 113, 0.2);
 }
 
 .learning-icon {
@@ -964,7 +959,6 @@ body {
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 60px rgba(0, 245, 255, 0.2);
 }
 
 .project-header {
@@ -1043,7 +1037,6 @@ body {
 
 .project-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
 }
 
 /* Journey Timeline */
@@ -1251,7 +1244,6 @@ body {
 
 .contact-button:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 245, 255, 0.2);
     border-color: var(--primary);
 }
 
@@ -1537,7 +1529,6 @@ body {
 
 .image-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 245, 255, 0.3);
 }
 
 .image-container {
@@ -1750,7 +1741,6 @@ V Section */
     border-radius: 16px;
     padding: 2.5rem;
     border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-glow);
     text-align: center;
     transition: var(--transition);
     position: relative;
@@ -1776,7 +1766,6 @@ V Section */
 
 .cv-document:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 60px rgba(0, 245, 255, 0.3);
 }
 
 .document-icon {
@@ -1925,7 +1914,6 @@ V Section */
 
 .cv-button:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 245, 255, 0.3);
 }
 
 .cv-button .button-icon {
@@ -2025,7 +2013,6 @@ V Section */
     border-radius: 50%;
     border: none;
     cursor: pointer;
-    box-shadow: 0 8px 32px rgba(0, 245, 255, 0.4);
     z-index: 999;
     transition: var(--transition);
     display: flex;
@@ -2035,7 +2022,6 @@ V Section */
 
 .chatbot-button:hover {
     transform: scale(1.1);
-    box-shadow: 0 12px 40px rgba(0, 245, 255, 0.6);
 }
 
 .chatbot-button:focus {
@@ -2341,7 +2327,6 @@ V Section */
 
 .chatbot-send-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 16px rgba(0, 245, 255, 0.4);
 }
 
 .chatbot-send-btn:disabled {
@@ -2837,7 +2822,6 @@ section {
 
 .hex-item:hover .hex-content .skill-icon {
     transform: scale(1.2);
-    filter: drop-shadow(0 0 10px rgba(241, 196, 15, 0.5));
 }
 
 .hex-content h4 {
@@ -2984,7 +2968,6 @@ section {
     height: 120px;
     border-radius: 50%;
     border: 3px solid var(--primary);
-    box-shadow: 0 0 20px rgba(241, 196, 15, 0.3);
 }
 
 .github-info h3 {
@@ -3014,7 +2997,6 @@ section {
 
 .github-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(241, 196, 15, 0.3);
     color: #000000; /* Maintain black text on hover */
 }
 
@@ -3295,10 +3277,9 @@ section {
     align-items: center;
 }
 
-/* Icon hover effects */
+/* Icon hover effects - removed scaling to prevent disappearing */
 .project-icon:hover i,
 .document-icon:hover i {
-    transform: scale(1.1);
     transition: transform 0.3s ease;
 }
 
