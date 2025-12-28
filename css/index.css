@@ -3275,3 +3275,170 @@ section {
         font-size: 0.95rem;
     }
 }
+/* Professional Icon Styling */
+.about-card h3 i,
+.image-overlay h3 i {
+    margin-right: 0.5rem;
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.project-icon i {
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+.document-icon i {
+    font-size: 3rem;
+    color: var(--primary);
+}
+
+.highlight-icon i {
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+.cv-button .button-icon i {
+    font-size: 1.2rem;
+    color: inherit;
+}
+
+/* Ensure icons are properly aligned */
+.about-card h3,
+.image-overlay h3 {
+    display: flex;
+    align-items: center;
+}
+
+/* Icon hover effects */
+.project-icon:hover i,
+.document-icon:hover i {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.highlight-icon:hover i {
+    color: var(--secondary);
+    transition: color 0.3s ease;
+}
+/* Achievement Badge Styling */
+.achievement-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(241, 196, 15, 0.1);
+    border-radius: 12px;
+    border: 2px solid var(--primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.achievement-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(241, 196, 15, 0.2), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.committers-badge {
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.committers-badge:hover {
+    transform: scale(1.05);
+}
+
+.badge-text {
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .achievement-badge {
+        margin: 1.5rem 0;
+        padding: 1.2rem;
+    }
+    
+    .committers-badge {
+        max-width: 180px;
+    }
+    
+    .badge-text {
+        font-size: 0.8rem;
+    }
+}
+/* Profile Achievement Badge */
+.profile-achievement {
+    text-align: center;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(241, 196, 15, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(241, 196, 15, 0.2);
+}
+
+.profile-badge {
+    max-width: 150px;
+    height: auto;
+    border-radius: 6px;
+    transition: transform 0.3s ease;
+}
+
+.profile-badge:hover {
+    transform: scale(1.05);
+}
+
+.detail-item:last-child .detail-value {
+    color: var(--primary);
+    font-weight: 600;
+}
+/* Achievement Highlight in Skills Section */
+.achievement-highlight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, rgba(241, 196, 15, 0.1), rgba(241, 196, 15, 0.05));
+    border: 1px solid rgba(241, 196, 15, 0.3);
+    border-radius: 25px;
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 0.9rem;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.achievement-highlight i {
+    color: var(--secondary);
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .achievement-highlight {
+        font-size: 0.8rem;
+        padding: 0.6rem 1.2rem;
+    }
+}
