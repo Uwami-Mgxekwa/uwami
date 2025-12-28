@@ -3442,3 +3442,81 @@ section {
         padding: 0.6rem 1.2rem;
     }
 }
+/* Clean GitHub Badge Styling */
+.github-badge {
+    margin: 1rem 0;
+}
+
+.committers-badge-github {
+    max-width: 180px;
+    height: auto;
+    border-radius: 6px;
+    transition: transform 0.3s ease;
+}
+
+.committers-badge-github:hover {
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+    .committers-badge-github {
+        max-width: 160px;
+    }
+}
+/* GitHub Avatar Styling */
+.github-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid var(--primary);
+    object-fit: cover;
+    display: none; /* Hidden by default, shown when loaded */
+    transition: transform 0.3s ease;
+}
+
+.github-avatar:hover {
+    transform: scale(1.05);
+}
+
+/* Ensure profile header layout works with avatar */
+.profile-header-github {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.github-info {
+    flex: 1;
+}
+
+.github-info h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.github-info p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+/* GitHub link styling */
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    margin-top: 0.5rem;
+}
+
+.github-link:hover {
+    color: var(--secondary);
+    transform: translateX(5px);
+}
+
+.github-link i {
+    font-size: 1.2rem;
+}

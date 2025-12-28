@@ -630,46 +630,46 @@ async function fetchGitHubStats() {
         const userResponse = await fetch(`https://api.github.com/users/${username}`);
         const userData = await userResponse.json();
 
-        // Fetch repositories
-        const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
-        const reposData = await reposResponse.json();
+        // Use your actual impressive stats
+        const actualStats = {
+            repos: 78,
+            stars: 68,
+            commits: 8972, // Will hit 9000 soon!
+            followers: userData.followers || 50
+        };
 
-        // Calculate stars
-        const totalStars = reposData.reduce((acc, repo) => acc + repo.stargazers_count, 0);
+        // Update DOM with actual stats
+        animateCounter('total-repos', actualStats.repos);
+        animateCounter('total-stars', actualStats.stars);
+        animateCounter('total-commits', actualStats.commits);
+        animateCounter('total-followers', actualStats.followers);
 
-        // Fetch recent commits from events (approximate)
-        const eventsResponse = await fetch(`https://api.github.com/users/${username}/events?per_page=100`);
-        const eventsData = await eventsResponse.json();
+        // Update profile info and avatar
+        if (userData.avatar_url) {
+            const avatarImg = document.getElementById('github-avatar');
+            avatarImg.src = userData.avatar_url;
+            avatarImg.alt = `${userData.name || username} GitHub Avatar`;
+            avatarImg.style.display = 'block';
+        }
         
-        // Count push events as a proxy for commits (GitHub API limitation)
-        const pushEvents = eventsData.filter(event => event.type === 'PushEvent');
-        const totalCommits = pushEvents.reduce((acc, event) => {
-            return acc + (event.payload.commits ? event.payload.commits.length : 0);
-        }, 0);
-
-        // If no recent commits found, estimate based on repos (fallback)
-        const estimatedCommits = totalCommits > 0 ? totalCommits : Math.max(userData.public_repos * 15, 100);
-
-        // Update DOM
-        animateCounter('total-repos', userData.public_repos);
-        animateCounter('total-stars', totalStars);
-        animateCounter('total-commits', estimatedCommits);
-        animateCounter('total-followers', userData.followers);
-
-        // Update profile info
-        document.getElementById('github-avatar').src = userData.avatar_url;
-        document.getElementById('github-name').textContent = userData.name || username;
-        document.getElementById('github-bio').textContent = userData.bio || 'Software Developer & Educator';
+        document.getElementById('github-name').textContent = userData.name || 'Uwami Mgxekwa';
+        document.getElementById('github-bio').textContent = userData.bio || 'Software Developer & IT Systems Development Lecturer';
 
     } catch (error) {
         console.error('Error fetching GitHub stats:', error);
-        // Fallback values
-        document.getElementById('total-repos').textContent = '50+';
-        document.getElementById('total-stars').textContent = '100+';
-        document.getElementById('total-commits').textContent = '200+';
+        // Use your actual stats as fallback
+        document.getElementById('total-repos').textContent = '78';
+        document.getElementById('total-stars').textContent = '68';
+        document.getElementById('total-commits').textContent = '8,972';
         document.getElementById('total-followers').textContent = '50+';
         document.getElementById('github-name').textContent = 'Uwami Mgxekwa';
         document.getElementById('github-bio').textContent = 'Software Developer & IT Systems Development Lecturer';
+        
+        // Set a default avatar if API fails
+        const avatarImg = document.getElementById('github-avatar');
+        avatarImg.src = 'https://github.com/Uwami-Mgxekwa.png';
+        avatarImg.alt = 'Uwami Mgxekwa GitHub Avatar';
+        avatarImg.style.display = 'block';
     }
 }
 
@@ -685,10 +685,12 @@ function animateCounter(elementId, target) {
     const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
-            element.textContent = target;
+            // Format final number with commas for large numbers
+            element.textContent = target >= 1000 ? target.toLocaleString() : target;
             clearInterval(timer);
         } else {
-            element.textContent = Math.floor(current);
+            const displayValue = Math.floor(current);
+            element.textContent = displayValue >= 1000 ? displayValue.toLocaleString() : displayValue;
         }
     }, stepTime);
 }
