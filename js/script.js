@@ -649,7 +649,6 @@ async function fetchGitHubStats() {
             const avatarImg = document.getElementById('github-avatar');
             avatarImg.src = userData.avatar_url;
             avatarImg.alt = `${userData.name || username} GitHub Avatar`;
-            avatarImg.style.display = 'block';
         }
         
         document.getElementById('github-name').textContent = userData.name || 'Uwami Mgxekwa';
@@ -667,9 +666,10 @@ async function fetchGitHubStats() {
         
         // Set a default avatar if API fails
         const avatarImg = document.getElementById('github-avatar');
-        avatarImg.src = 'https://github.com/Uwami-Mgxekwa.png';
-        avatarImg.alt = 'Uwami Mgxekwa GitHub Avatar';
-        avatarImg.style.display = 'block';
+        if (!avatarImg.src || avatarImg.src === '') {
+            avatarImg.src = 'https://github.com/Uwami-Mgxekwa.png';
+            avatarImg.alt = 'Uwami Mgxekwa GitHub Avatar';
+        }
     }
 }
 

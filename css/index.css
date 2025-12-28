@@ -3442,25 +3442,40 @@ section {
         padding: 0.6rem 1.2rem;
     }
 }
-/* Clean GitHub Badge Styling */
+/* Clean GitHub Badge Styling - MUCH BIGGER */
 .github-badge {
-    margin: 1rem 0;
+    margin: 1.5rem 0;
+    text-align: center;
 }
 
 .committers-badge-github {
-    max-width: 180px;
+    max-width: 300px; /* Much bigger! */
+    width: 100%;
     height: auto;
-    border-radius: 6px;
+    border-radius: 8px;
     transition: transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .committers-badge-github:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
+}
+
+.badge-description {
+    margin-top: 0.8rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-align: center;
 }
 
 @media (max-width: 768px) {
     .committers-badge-github {
-        max-width: 160px;
+        max-width: 280px;
+    }
+    
+    .badge-description {
+        font-size: 0.85rem;
     }
 }
 /* GitHub Avatar Styling */
@@ -3470,7 +3485,7 @@ section {
     border-radius: 50%;
     border: 3px solid var(--primary);
     object-fit: cover;
-    display: none; /* Hidden by default, shown when loaded */
+    display: block; /* Always visible */
     transition: transform 0.3s ease;
 }
 
