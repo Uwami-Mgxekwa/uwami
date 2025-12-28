@@ -295,28 +295,6 @@ function initSkillBars() {
     skillCards.forEach(card => {
         skillObserver.observe(card);
     });
-
-    // Learning progress bars
-    const learningCards = document.querySelectorAll('.learning-card');
-
-    const learningObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const progressBar = entry.target.querySelector('.progress-bar');
-                const progress = progressBar.getAttribute('data-progress');
-
-                setTimeout(() => {
-                    progressBar.style.width = progress + '%';
-                }, Math.random() * 300);
-
-                learningObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    learningCards.forEach(card => {
-        learningObserver.observe(card);
-    });
 }
 
 // Timeline Animations

@@ -29,6 +29,7 @@ function initChatbot() {
         skills: ['skill', 'skills', 'what can you do', 'technologies', 'programming languages', 'tech stack'],
         java: ['java', 'swing', 'desktop', 'gui'],
         web: ['web', 'javascript', 'html', 'css', 'frontend', 'react', 'typescript'],
+        database: ['database', 'mysql', 'postgresql', 'sql', 'data'],
         teaching: ['teach', 'teaching', 'educator', 'lecturer', 'students', 'college', 'gauteng city college'],
         projects: ['project', 'projects', 'portfolio', 'work', 'built', 'created'],
         education: ['education', 'degree', 'qualification', 'study', 'university'],
@@ -42,11 +43,13 @@ function initChatbot() {
     const responses = {
         greetings: "Hey there! I'm Uwami's digital assistant. I can tell you about:\n\n• His journey from C++ newbie to teaching 200+ students\n• The projects he's built (and the bugs he's squashed)\n• What it's like teaching Java in 2025\n• How to get in touch for a chat\n\nWhat would you like to know?",
         
-        skills: "Uwami is proficient in multiple technologies:\n\n💎 Core Expertise:\n• Java & Java Swing (Primary)\n• JavaScript (ES6+)\n• C++\n• Python\n• SQL\n• CSS3\n\n🌱 Currently Learning:\n• React\n• TypeScript\n• C#\n• Vite\n\nHe specializes in desktop applications with Java Swing and is expanding into modern web development!",
+        skills: "Uwami is proficient in multiple technologies:\n\n💎 Core Expertise:\n• Java & Java Swing (Primary)\n• JavaScript (ES6+)\n• C++\n• Python\n• MySQL & PostgreSQL\n• CSS3\n\n🌱 Currently Learning:\n• React\n• TypeScript\n• C#\n• Vite\n\nHe specializes in desktop applications with Java Swing and is expanding into modern web development!",
         
         java: "Java is Uwami's primary strength! 💪\n\n✨ Expertise includes:\n• Java Swing GUI development\n• Desktop application architecture\n• Object-Oriented Programming\n• Database integration with Java\n• Complex system design\n\nHe's built numerous Java applications including student management systems and inventory trackers. Would you like to see his projects?",
         
         web: "Uwami is actively developing his web development skills:\n\n🌐 Current Skills:\n• JavaScript (Modern ES6+)\n• HTML5 & CSS3\n• Responsive design\n• DOM manipulation\n\n🚀 Learning Path:\n• React for component-based UIs\n• TypeScript for type safety\n• Modern build tools (Vite)\n\nHe's bridging desktop and web development to become a versatile full-stack developer!",
+        
+        database: "Uwami has solid database expertise!\n\nRelational Databases:\n• MySQL - Advanced level\n• PostgreSQL - Advanced level\n• Database design and optimization\n• Complex queries and joins\n• Data modeling\n\nHe's built several applications with robust database integration, especially in his Java Swing projects. His student management system showcases his database skills perfectly!",
         
         teaching: "Uwami loves teaching!\n\nAt Gauteng City College:\n• IT Systems Development Lecturer\n• Has taught 200+ students\n• Specializes in making complex concepts click\n\nHis approach:\n\"I still remember my first 'Hello World' struggle, so I get it when students are confused. My job is turning those confused faces into confident coders.\"\n\nHe says the best part is watching quiet students become confident developers!",
         

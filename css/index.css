@@ -924,22 +924,6 @@ body {
     color: var(--secondary);
 }
 
-.learning-progress {
-    width: 100%;
-    height: 6px;
-    background: var(--border-color);
-    border-radius: 3px;
-    overflow: hidden;
-}
-
-.progress-bar {
-    height: 100%;
-    background: var(--gradient-secondary);
-    border-radius: 3px;
-    width: 0;
-    transition: width 1s ease-in-out;
-}
-
 /* Projects Section */
 .projects {
     padding: 8rem 0;
