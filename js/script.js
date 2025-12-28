@@ -273,30 +273,6 @@ function initScrollAnimations() {
     });
 }
 
-// Skill Bars Animation
-function initSkillBars() {
-    const skillCards = document.querySelectorAll('.skill-card');
-
-    const skillObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const skillLevel = entry.target.getAttribute('data-skill');
-                const progressBar = entry.target.querySelector('.skill-progress');
-
-                setTimeout(() => {
-                    progressBar.style.width = skillLevel + '%';
-                }, Math.random() * 500);
-
-                skillObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    skillCards.forEach(card => {
-        skillObserver.observe(card);
-    });
-}
-
 // Timeline Animations
 function initTimelineAnimations() {
     const timelineItems = document.querySelectorAll('.timeline-item');
@@ -469,7 +445,6 @@ if (typeof module !== 'undefined' && module.exports) {
         initCodeAnimation,
         initCounters,
         initScrollAnimations,
-        initSkillBars,
         initTimelineAnimations,
         initSmoothScrolling,
         initParallaxEffect,
@@ -779,7 +754,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initCodeAnimation();
     initCounters();
     initScrollAnimations();
-    initSkillBars();
     initTimelineAnimations();
     initSmoothScrolling();
     initParallaxEffect();

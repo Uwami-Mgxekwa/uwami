@@ -14,14 +14,14 @@ class Skills3D {
         this.container = null;
         this.animationId = null;
         
-        // Skills data with colors and proficiency levels
+        // Skills data with colors (removed level percentages)
         this.skillsData = [
-            { name: 'Java', level: 95, color: 0xED8B00, icon: 'devicon-java-plain', iconColor: '#ED8B00' },
-            { name: 'Spring Boot', level: 88, color: 0x6DB33F, icon: 'devicon-spring-plain', iconColor: '#6DB33F' },
-            { name: 'JavaScript', level: 90, color: 0xF7DF1E, icon: 'devicon-javascript-plain', iconColor: '#F7DF1E' },
-            { name: 'C++', level: 85, color: 0x00599C, icon: 'devicon-cplusplus-plain', iconColor: '#00599C' },
-            { name: 'SQL', level: 85, color: 0x336791, icon: 'devicon-mysql-plain', iconColor: '#336791' },
-            { name: 'CSS', level: 90, color: 0x1572B6, icon: 'devicon-css3-plain', iconColor: '#1572B6' }
+            { name: 'Java', color: 0xED8B00, icon: 'devicon-java-plain', iconColor: '#ED8B00' },
+            { name: 'Spring Boot', color: 0x6DB33F, icon: 'devicon-spring-plain', iconColor: '#6DB33F' },
+            { name: 'JavaScript', color: 0xF7DF1E, icon: 'devicon-javascript-plain', iconColor: '#F7DF1E' },
+            { name: 'C++', color: 0x00599C, icon: 'devicon-cplusplus-plain', iconColor: '#00599C' },
+            { name: 'SQL', color: 0x336791, icon: 'devicon-mysql-plain', iconColor: '#336791' },
+            { name: 'CSS', color: 0x1572B6, icon: 'devicon-css3-plain', iconColor: '#1572B6' }
         ];
         
         this.init();
@@ -170,10 +170,10 @@ class Skills3D {
         context.textBaseline = 'middle';
         context.fillText(skill.name, canvas.width / 2, canvas.height / 2 + 20);
         
-        // Draw level
-        context.font = '14px Inter, sans-serif';
-        context.fillStyle = '#f1c40f';
-        context.fillText(`${skill.level}%`, canvas.width / 2, canvas.height / 2 + 45);
+        // Draw level - removed percentage display
+        // context.font = '14px Inter, sans-serif';
+        // context.fillStyle = '#f1c40f';
+        // context.fillText(`${skill.level}%`, canvas.width / 2, canvas.height / 2 + 45);
         
         // Create texture and material
         const texture = new THREE.CanvasTexture(canvas);
@@ -392,10 +392,7 @@ class Skills3D {
                     <h3>${skill.name}</h3>
                 </div>
                 <div class="skill-popup-level">
-                    <div class="skill-popup-bar">
-                        <div class="skill-popup-progress" style="width: ${skill.level}%"></div>
-                    </div>
-                    <span class="skill-popup-percentage">${skill.level}%</span>
+                    <!-- Removed progress bar and percentage display -->
                 </div>
                 <p class="skill-popup-description">
                     ${this.getSkillDescription(skill.name)}
